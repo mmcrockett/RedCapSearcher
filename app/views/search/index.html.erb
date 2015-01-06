@@ -1,0 +1,20 @@
+  <div class="welcome" ng-controller="SearchController">
+    <div class="front-login alert alert-danger" ng-show="error">{{error}}</div>
+    <div>
+      <form class="well">
+        <div ng-show="(state != SEARCH)">
+          <input type="text" class="form-control" placeholder="REDCap API URL" autofocus ng-model="url">
+          <div class="input-mini"></div>
+          <input type="text" class="form-control" placeholder="Token" ng-model="token">
+          <div class="input-mini"></div>
+          <button ng-class="{'btn btn-lg btn-block':true, 'btn-success':(state == LOADED), 'btn-primary':(state != LOADED)}" type="submit" ng-click="verify()"><span ng-show="(state == LOADED)">Success!</span><span ng-show="(state == NONE)">Submit</span><span ng-show="(state == LOADING)"><img src="/assets/spinner.gif" /></span></button>
+          <div class="input-mini"></div>
+        </div>
+        <div ng-show="(state == SEARCH)">
+          <input type="text" class="form-control" placeholder="Search" ng-model="search">
+          <div class="input-mini"></div>
+          <button ng-repeat="header in headers">{{header}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
